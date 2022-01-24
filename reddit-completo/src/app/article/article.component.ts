@@ -1,4 +1,5 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding} from '@angular/core';
+import { Article } from './ article.model';
 @Component({
   selector: 'app-article', //Il tag per inserire il componente sarà <app-article>
   templateUrl: './article.component.html',
