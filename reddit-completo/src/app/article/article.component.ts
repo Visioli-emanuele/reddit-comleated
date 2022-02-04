@@ -5,18 +5,26 @@ import { Article } from './ article.model';
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css']
 })
-export class AppComponent {
-  articles:Article[];   // <-- component property
-  constructor(){
-    this.articles = [
-      new Article('Angular 2', 'http://angular.io', 3),
-      new Article('Fullstack', 'http://fullstack.io', 2),
-      new Article('Angular Homepage', 'http://angular.io', 1),
-    ];
+
+
+
+export class ArticleComponent implements OnInit {
+  @HostBinding('attr.class') cssClass = 'card';
+  article:Article
+
+  constructor() {
+    this.article = new Article('Angular 2','http://angular.io',10);
   }
 
-  addArticle(title: HTMLInputElement, link: HTMLInputElement): boolean {
-    this.articles.push(new Article('Angular 2', 'http://angular.io', 3));
-    return false;
+  voteUp(): Boolean {
+    this.article.votes += 1; //accediamo alla proprietà votes di article
+    return false; //Non propagare l'evento
   }
+
+  voteDown():Boolean {
+    this.article.votes -= 1;
+    return false; //Non propagare l'evento
+  }
+
+  ngOnInit() {}
 }
